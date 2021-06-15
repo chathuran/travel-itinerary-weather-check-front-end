@@ -1,0 +1,66 @@
+<div class="weather-card-wrapper">
+  <table class="table table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">{{forecastResponse.city?.cityId?.cityName}}</th>
+      <th scope="col"><img
+        [src]="'https://www.countryflags.io/'+forecastResponse.city?.cityId?.countryCode+'/flat/64.png'"
+        class="mr-2"
+        style="width: 20px">
+        {{ forecastResponse.city?.cityId?.countryCode }}</th>
+      <th scope="col">Date</th>
+      <th scope="col">12 PM</th>
+      <th scope="col">3 PM</th>
+      <th scope="col">6 PM</th>
+      <th scope="col" *ngIf="!isFavorites">
+        <button type="button" class="btn btn-warning" (click)="addToFavorites(forecastResponse.city)"
+                ngbTooltip="Add to favorites">
+          <i class="fa fa-star"></i>
+        </button>
+      </th>
+      <th *ngIf="isFavorites"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let temperatureListItem of forecastResponse.temperatureMapList| keyvalue; index as ic"
+        [ngClass]="changeSelectedDateItemStyle(temperatureListItem.key)">
+      <td scope="row">{{ic + 1}}</td>
+      <td></td>
+      <td></td>
+      <td>{{temperatureListItem.key}}</td>
+      <td *ngFor="let temperature of temperatureListItem.value; index as it">
+
+          <span class="temp-details-wrapper">
+            <span class="temp-details-left">
+                <span>  <img [src]="'http://openweathermap.org/img/wn/'+temperature.weatherIcon+'@2x.png'"
+                             class="mr-2 weather-icon"
+                ></span>
+            </span>
+            <span class="temp-details-right">
+
+                <span>{{temperature.weather}}</span>
+                 <span class="temp-label">{{temperature.temp}} &#x2103;</span>
+               <span>Cloudiness: {{temperature.clouds}} %</span>
+            </span>
+          </span>
+
+      </td>
+      <td *ngIf="temperatureListItem.value.length === 2"></td>
+      <td *ngIf="temperatureListItem.value.length === 1"></td>
+      <td *ngIf="temperatureListItem.value.length === 1"></td>
+      <td *ngIf="temperatureListItem.value.length === 0"></td>
+      <td *ngIf="temperatureListItem.value.length === 0"></td>
+      <td *ngIf="temperatureListItem.value.length === 0"></td>
+      <td>
+        <button type="button" class="btn btn-info"
+                (click)="viewSummary(temperatureListItem.value,forecastResponse.city,temperatureListItem.key)"
+                ngbTooltip="View Summary">
+          <i class="fa fa fa-clipboard"></i>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

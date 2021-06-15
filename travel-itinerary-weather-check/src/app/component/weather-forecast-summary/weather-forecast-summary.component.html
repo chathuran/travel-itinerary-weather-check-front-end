@@ -1,0 +1,20 @@
+<div class="row summary-main-wrapper card">
+  <div class="col-md-12 card-header">
+    <h1>Summary Details {{weatherSummary.date| date : 'fullDate'}}</h1>
+  </div>
+  <div class="col-md-12 forecast-list-wrapper card-body">
+    <app-weather-summary-card *ngFor="let weather of weatherSummary.temperatureList"
+                              [timelyWeatherDetails]="weather"></app-weather-summary-card>
+  </div>
+  <div class="col-md-12 forecast-summery-wrapper">
+    <!--          <h2 >{{weatherSummary.minTemp}} &#x2103; / {{weatherSummary.maxTemp}} &#x2103;</h2>-->
+    <div class="weather-msg-wrapper">
+              <span class="weather-msg">
+                {{weatherSummary.weatherSummeryMessage}}
+              </span>
+    </div>
+  </div>
+  <div class="col-md-12 modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="onNoClick()">Close</button>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+div,h1{
+  font-family: cursive;
+}
+.forecast-list-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.forecast-summery-wrapper{
+  padding: 3em 3em 3em 3em;
+}
+.weather-msg-wrapper{
+
+  padding: 1em;
+  border: 5px solid #17a2b8;
+}
+.weather-msg{
+  font-family: cursive;
+  font-size: large;
+}

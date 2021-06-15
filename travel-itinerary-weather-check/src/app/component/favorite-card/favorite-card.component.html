@@ -1,0 +1,9 @@
+<div class="fav-card">
+
+  <h1 class="fav-card-title">{{forecastResponse.city.cityId.cityName}}</h1>
+  <img class=""
+    [src]="'https://www.countryflags.io/'+forecastResponse.city.cityId.countryCode+'/flat/64.png'"
+    class="mr-2 fav-card-image">
+  <i class="fa fa fa-times
+ remove-card" (click)="removeFromFavorites(forecastResponse)" ngbTooltip="Remove"></i>
+</div>

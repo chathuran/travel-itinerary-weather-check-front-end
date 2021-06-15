@@ -1,0 +1,14 @@
+<div class="favorites-weather-wrapper">
+  <div class="col-md-12 title-wrapper">
+    <h1>Favorites</h1>
+  </div>
+  <div class="fav-card-wrapper">
+    <app-favorite-card *ngFor="let forecastResponse of forecastResponseList" [forecastResponse]="forecastResponse" (click)="getSelectedFavWeatherDetails(forecastResponse)"></app-favorite-card>
+  </div>
+  <div class="fav-details-wrapper" *ngIf="selectedForecastDetails">
+
+        <app-weather-forecast-card [forecastResponse]="selectedForecastDetails" [selectedDate]="selectedDate" [isFavorites]="true"></app-weather-forecast-card>
+
+  </div>
+
+</div>

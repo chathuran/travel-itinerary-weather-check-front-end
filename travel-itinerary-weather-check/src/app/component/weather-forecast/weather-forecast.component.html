@@ -1,0 +1,37 @@
+<div class="row main-contain-wrapper">
+  <div class="col-md-12 title-wrapper">
+    <h1>Weather Forecast</h1>
+  </div>
+  <div class="col-md-6 form-wrapper">
+    <form class="form-inline" [formGroup]="submitForm" (validSubmit)="submit()">
+      <div class="form-group mr-2">
+        <label class="sr-only" for="inputCityName">City</label>
+        <input type="text" class="form-control" formControlName="city" id="inputCityName" placeholder="City"
+               [(ngModel)]="selectedCity" [ngbTypeahead]="search">
+        <bfv-messages [ngStyle]="{'display':'none'}"></bfv-messages>
+      </div>
+
+      <div class="form-group mr-2">
+        <label class="sr-only" for="inputDate">Date</label>
+        <input type="date" class="form-control" formControlName="date" id="inputDate" placeholder="Date"
+               min="{{minDate|date:'yyyy-MM-dd'}}" max="{{maxDate|date:'yyyy-MM-dd'}}" >
+        <bfv-messages [ngStyle]="{'display':'none'}"></bfv-messages>
+      </div>
+      <div class="form-group mr-2">
+      <button type="submit" class="btn btn-info">Submit</button>
+      </div>
+        <div class="form-group mr-2">
+      <button type="button" class="btn btn-secondary" (click)="clear()">Clear</button>
+        </div>
+    </form>
+  </div>
+  <div class="col-md-12 weather-table-wrapper">
+        <app-weather-forecast-card  *ngFor="let forecastResponse of forecastResponseList" [forecastResponse]="forecastResponse" [selectedDate]="selectedDate" [isFavorites]="false"></app-weather-forecast-card>
+
+  </div>
+
+</div>
+
+
+
+
